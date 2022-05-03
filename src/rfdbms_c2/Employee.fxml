@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="868.0" prefWidth="1273.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rfdbms_c2.EmployeeController">
+   <left>
+      <AnchorPane prefHeight="630.0" prefWidth="155.0" style="-fx-background-color: #0F084B;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="eorderBtn" layoutX="1.0" layoutY="127.0" mnemonicParsing="false" onAction="#ehandleButtonAction" prefHeight="46.0" prefWidth="154.0" style="-fx-background-color: #FFFFFF;" text="Order">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button fx:id="eorderListBtn" layoutX="1.0" layoutY="190.0" mnemonicParsing="false" onAction="#ehandleButtonAction" prefHeight="46.0" prefWidth="154.0" style="-fx-background-color: #FFFFFF;" text="Order List">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="eitemsListBtn" layoutX="1.0" layoutY="316.0" mnemonicParsing="false" onAction="#ehandleButtonAction" prefHeight="46.0" prefWidth="154.0" style="-fx-background-color: #FFFFFF;" text="Items List">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="epackageListBtn" layoutX="1.0" layoutY="253.0" mnemonicParsing="false" onAction="#ehandleButtonAction" prefHeight="46.0" prefWidth="154.0" style="-fx-background-color: #FFFFFF;" text="Package List">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="ereservationBtn" layoutX="1.0" layoutY="379.0" mnemonicParsing="false" onAction="#ehandleButtonAction" prefHeight="46.0" prefWidth="154.0" style="-fx-background-color: #FFFFFF;" text="Reservation">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="ereservationListBtn" layoutX="1.0" layoutY="449.0" mnemonicParsing="false" onAction="#ehandleButtonAction" prefHeight="46.0" prefWidth="154.0" style="-fx-background-color: #FFFFFF;" text="Reservation List">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="eprofileBtn" layoutX="1.0" layoutY="519.0" mnemonicParsing="false" onAction="#ehandleButtonAction" prefHeight="46.0" prefWidth="154.0" style="-fx-background-color: #FFFFFF;" text="Profile">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="elogoutBtn" layoutX="1.0" layoutY="588.0" mnemonicParsing="false" onAction="#ehandleButtonAction" prefHeight="46.0" prefWidth="154.0" style="-fx-background-color: #FFFFFF;" text="Logout">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" layoutX="1.0" layoutY="14.0" prefHeight="46.0" prefWidth="154.0" text="RFDBMS" textFill="#c6f4ff">
+               <font>
+                  <Font name="System Bold" size="34.0" />
+               </font>
+               <effect>
+                  <Lighting specularConstant="2.0">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <StackPane prefHeight="622.0" prefWidth="915.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="eitemsListAnc" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="128.0" prefWidth="1119.0" style="-fx-background-color: #0F084B;">
+                     <children>
+                        <TextField fx:id="eItemListSearch" layoutX="787.0" layoutY="29.0" onKeyTyped="#eItemSearch" prefHeight="35.0" prefWidth="318.0" promptText="Search" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2em; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></TextField>
+                        <ImageView fitHeight="35.0" fitWidth="36.0" layoutX="1069.0" layoutY="29.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/search.png" />
+                           </image></ImageView>
+                     </children>
+                  </Pane>
+                  <TableView fx:id="eItemList" layoutY="128.0" prefHeight="741.0" prefWidth="1119.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="128.0">
+                     <columns>
+                        <TableColumn fx:id="I_id" editable="false" prefWidth="141.0" sortable="false" text="Items ID" />
+                        <TableColumn fx:id="IName" editable="false" prefWidth="237.0" sortable="false" text="Item Name" />
+                        <TableColumn fx:id="IPrice" editable="false" prefWidth="184.0" sortable="false" text="Price" />
+                        <TableColumn fx:id="IQuantity" editable="false" prefWidth="391.0" sortable="false" text="Quantity" />
+                        <TableColumn fx:id="IStatus" editable="false" prefWidth="165.0" sortable="false" text="Status" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="epackageListAnc" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="128.0" prefWidth="1119.0" style="-fx-background-color: #0F084B;">
+                     <children>
+                        <TextField fx:id="ePackageSearchTextField" layoutX="787.0" layoutY="29.0" onKeyTyped="#ePackageSearch" prefHeight="35.0" prefWidth="318.0" promptText="Search " style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2em; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></TextField>
+                        <ImageView fitHeight="41.0" fitWidth="34.0" layoutX="1064.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/search.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <TableView fx:id="ePackageList" layoutY="128.0" prefHeight="741.0" prefWidth="1119.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="128.0">
+                    <columns>
+                      <TableColumn fx:id="P_id" editable="false" prefWidth="127.0" sortable="false" text="Package ID" />
+                      <TableColumn fx:id="PName" editable="false" prefWidth="217.0" sortable="false" text="Package Name" />
+                        <TableColumn fx:id="PPrice" editable="false" prefWidth="108.0" sortable="false" text="Price" />
+                        <TableColumn fx:id="PDescription" editable="false" prefWidth="583.0" sortable="false" text="Package Description" />
+                        <TableColumn fx:id="PStatus" editable="false" prefWidth="83.0" sortable="false" text="Status" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="eprofileAnc" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0F084B;">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="485.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/login.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="280.0" layoutY="253.0" prefHeight="46.0" prefWidth="154.0" text="Name" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="280.0" layoutY="299.0" prefHeight="46.0" prefWidth="154.0" text="Phone Number" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="280.0" layoutY="345.0" prefHeight="46.0" prefWidth="154.0" text="Email" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="280.0" layoutY="391.0" prefHeight="46.0" prefWidth="154.0" text="Address" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="280.0" layoutY="620.0" prefHeight="46.0" prefWidth="154.0" text="Password" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="280.0" layoutY="558.0" prefHeight="46.0" prefWidth="154.0" text="UserName" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="280.0" layoutY="499.0" prefHeight="46.0" prefWidth="154.0" text="ID" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="eprofileName" editable="false" layoutX="485.0" layoutY="257.0" prefHeight="25.0" prefWidth="400.0" style="-fx-background-color: #0F084B; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="eprofilePhone" editable="false" layoutX="485.0" layoutY="303.0" prefHeight="25.0" prefWidth="400.0" style="-fx-background-color: #0F084B; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="eprofileAddress" editable="false" layoutX="485.0" layoutY="395.0" prefHeight="25.0" prefWidth="400.0" style="-fx-background-color: #0F084B; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="eprofileEmail" editable="false" layoutX="485.0" layoutY="349.0" prefHeight="25.0" prefWidth="400.0" style="-fx-background-color: #0F084B; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="eprofileUsername" layoutX="485.0" layoutY="560.0" prefHeight="25.0" prefWidth="400.0" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-radius: 2em; -fx-border-width: 2; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="eprofileID" editable="false" layoutX="485.0" layoutY="503.0" prefHeight="25.0" prefWidth="400.0" style="-fx-background-color: #0F084B; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="eprofilePassword" layoutX="485.0" layoutY="621.0" prefHeight="25.0" prefWidth="400.0" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-radius: 2em; -fx-border-width: 2; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="eProfileUserNameChangeBtn" layoutX="914.0" layoutY="560.0" mnemonicParsing="false" onAction="#eProfileUChange" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2em;" text="Change" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="eProfilePasswordChangeBtn" layoutX="914.0" layoutY="619.0" mnemonicParsing="false" onAction="#ePasswordChange" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2em;" text="Change" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
+            <AnchorPane fx:id="eorderListAnc" prefHeight="200.0" prefWidth="200.0" stylesheets="@../CSS/Tab.css">
+               <children>
+                  <JFXTabPane layoutY="127.0" prefHeight="742.0" prefWidth="1117.0" style="-fx-border-color: #FFFFFF;">
+                     <tabs>
+                        <Tab text="Order Info">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView prefHeight="683.0" prefWidth="1117.0" tableMenuButtonVisible="true">
+                                      <columns>
+                                        <TableColumn editable="false" prefWidth="100.0" sortable="false" text="Order ID" />
+                                        <TableColumn editable="false" prefWidth="100.0" sortable="false" text="Package ID" />
+                                          <TableColumn editable="false" prefWidth="215.0" sortable="false" text="Package Name" />
+                                          <TableColumn editable="false" sortable="false" text="Quantity" />
+                                          <TableColumn editable="false" prefWidth="100.0" sortable="false" text="Items ID" />
+                                          <TableColumn editable="false" prefWidth="215.0" sortable="false" text="Items Name" />
+                                          <TableColumn editable="false" sortable="false" text="Quantity" />
+                                          <TableColumn editable="false" prefWidth="100.0" sortable="false" text="Time" />
+                                          <TableColumn editable="false" prefWidth="126.0" sortable="false" text="Date" />
+                                      </columns>
+                                    </TableView>
+                                 </children></AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab text="Customer Info">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView prefHeight="681.0" prefWidth="1119.0" tableMenuButtonVisible="true">
+                                      <columns>
+                                        <TableColumn editable="false" prefWidth="100.0" sortable="false" text="Customer ID" />
+                                        <TableColumn editable="false" prefWidth="169.0" sortable="false" text="Customer Name" />
+                                          <TableColumn editable="false" prefWidth="186.0" sortable="false" text="Phone Number " />
+                                          <TableColumn editable="false" prefWidth="277.0" sortable="false" text="Email " />
+                                          <TableColumn editable="false" prefWidth="398.0" sortable="false" text="Address" />
+                                      </columns>
+                                    </TableView>
+                                 </children></AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab text="Payment Info">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView prefHeight="681.0" prefWidth="1117.0" tableMenuButtonVisible="true">
+                                      <columns>
+                                        <TableColumn editable="false" prefWidth="100.0" sortable="false" text="Payment ID" />
+                                        <TableColumn editable="false" prefWidth="150.0" sortable="false" text="Total price" />
+                                          <TableColumn editable="false" prefWidth="191.0" sortable="false" text="Payment Method" />
+                                          <TableColumn editable="false" prefWidth="158.0" sortable="false" text="Total Paid" />
+                                          <TableColumn editable="false" prefWidth="152.0" sortable="false" text="Total Due" />
+                                          <TableColumn editable="false" prefWidth="118.0" sortable="false" text="Time" />
+                                          <TableColumn editable="false" prefWidth="139.0" sortable="false" text="Date" />
+                                          <TableColumn editable="false" prefWidth="119.0" sortable="false" text="Check" />
+                                      </columns>
+                                    </TableView>
+                                 </children></AnchorPane>
+                          </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+                  <Pane prefHeight="127.0" prefWidth="1119.0" style="-fx-background-color: #0F084B; -fx-border-style: dash-style;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <TextField fx:id="eolSearch" layoutX="787.0" layoutY="46.0" onKeyTyped="#aOrderListSearch" prefHeight="35.0" prefWidth="318.0" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2em; -fx-text-fill: #FFFFFF;">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="1064.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/search.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="eorderAnc" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;">
+               <children>
+                  <Pane prefHeight="131.0" prefWidth="916.0" style="-fx-background-color: #0F084B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <TextField fx:id="eOrderNameTextField" layoutX="14.0" layoutY="23.0" prefHeight="35.0" prefWidth="215.0" promptText="Name" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2EM; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="eOrderPhoneTextField" layoutX="14.0" layoutY="72.0" prefHeight="35.0" prefWidth="215.0" promptText="Phone Number" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-radius: 2em; -fx-border-width: 2; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="eOrderOrderTextField" layoutX="243.0" layoutY="23.0" prefHeight="35.0" prefWidth="447.0" promptText="Order" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2EM; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="eOrderOkBtn" layoutX="979.0" layoutY="23.0" mnemonicParsing="false" onAction="#eOkOrder" prefHeight="35.0" prefWidth="117.0" style="-fx-background-color: #FFFFFF;" text="OK">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="eOrderEmailTextField" layoutX="243.0" layoutY="72.0" prefHeight="35.0" prefWidth="215.0" promptText="Email" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-radius: 2em; -fx-border-width: 2; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="eOrderAddressTextField" layoutX="476.0" layoutY="72.0" prefHeight="35.0" prefWidth="215.0" promptText="Address" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-radius: 2em; -fx-border-width: 2; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="eOrderClearBtn" layoutX="979.0" layoutY="72.0" mnemonicParsing="false" onAction="#eClearOrder" prefHeight="35.0" prefWidth="117.0" style="-fx-background-color: #FFFFFF;" text="Clear">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField layoutX="705.0" layoutY="72.0" prefHeight="35.0" prefWidth="259.0" promptText="Search" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 5em; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <ComboBox fx:id="eOrderPayCombo" layoutX="705.0" layoutY="23.0" prefHeight="35.0" prefWidth="259.0" promptText="Payment Method" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2em;" />
+                        <ImageView fitHeight="36.0" fitWidth="30.0" layoutX="928.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/search.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <TableView editable="true" layoutY="130.0" prefHeight="740.0" prefWidth="542.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="128.0">
+                    <columns>
+                      <TableColumn prefWidth="49.0" text="ID" />
+                      <TableColumn prefWidth="76.0" text="Name" />
+                        <TableColumn prefWidth="91.0" text="Phone number" />
+                        <TableColumn prefWidth="111.0" text="Order" />
+                        <TableColumn prefWidth="102.0" text="Pay Methos" />
+                        <TableColumn prefWidth="112.0" text="confirm" />
+                    </columns>
+                  </TableView>
+                  <TableView editable="true" layoutX="541.0" layoutY="130.0" prefHeight="740.0" prefWidth="577.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="541.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="128.0">
+                    <columns>
+                      <TableColumn prefWidth="49.0" text="ID" />
+                      <TableColumn prefWidth="67.0" text="name" />
+                        <TableColumn prefWidth="91.0" text="Phone Number" />
+                        <TableColumn prefWidth="99.0" text="Order ID" />
+                        <TableColumn prefWidth="110.0" text="Payment Method" />
+                        <TableColumn prefWidth="85.0" text="Date" />
+                        <TableColumn prefWidth="75.0" text="Time" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="ereservationAnc" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Pane layoutY="2.0" prefHeight="189.0" prefWidth="1119.0" style="-fx-background-color: #0F084B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <TextField fx:id="erName" layoutX="14.0" layoutY="23.0" prefHeight="35.0" prefWidth="215.0" promptText="Name" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2EM; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="erAddress" layoutX="727.0" layoutY="23.0" prefHeight="35.0" prefWidth="215.0" promptText="Address" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-radius: 2em; -fx-border-width: 2; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="erPhone" layoutX="249.0" layoutY="23.0" prefHeight="35.0" prefWidth="215.0" promptText="Phone Number" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2EM; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="erOkBtn" layoutX="979.0" layoutY="23.0" mnemonicParsing="false" onAction="#eReservationOk" prefHeight="35.0" prefWidth="117.0" style="-fx-background-color: #FFFFFF;" text="OK">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <ComboBox fx:id="erPayMethod" layoutX="491.0" layoutY="128.0" prefHeight="35.0" prefWidth="215.0" promptText="Payment Method" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2EM;" />
+                        <TextField fx:id="erNumofPeople" layoutX="14.0" layoutY="78.0" prefHeight="35.0" prefWidth="215.0" promptText="Number of people" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-radius: 2em; -fx-border-width: 2; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="erReservDate" layoutX="491.0" layoutY="78.0" prefHeight="35.0" prefWidth="215.0" promptText="Reserve Date (YY-DD-MM)" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-radius: 2em; -fx-border-width: 2; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="erClearBtn" layoutX="979.0" layoutY="78.0" mnemonicParsing="false" onAction="#eReservationClear" prefHeight="35.0" prefWidth="117.0" style="-fx-background-color: #FFFFFF;" text="Clear">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="erReservTime" layoutX="727.0" layoutY="78.0" prefHeight="35.0" prefWidth="215.0" promptText="Reserve Time (hh:mm:ss)" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 5em; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="erEmail" layoutX="491.0" layoutY="23.0" prefHeight="35.0" prefWidth="215.0" promptText="Email" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2EM; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="erTable" layoutX="249.0" layoutY="78.0" prefHeight="35.0" prefWidth="215.0" promptText="Table" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 5em; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="erPrice" layoutX="14.0" layoutY="128.0" prefHeight="35.0" prefWidth="215.0" promptText="Total Price" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2em; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="erPaid" layoutX="249.0" layoutY="128.0" prefHeight="35.0" prefWidth="215.0" promptText="Paid" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 5em; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="erSearch" layoutX="727.0" layoutY="128.0" onKeyTyped="#erSearch" prefHeight="35.0" prefWidth="371.0" promptText="Search" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2em; -fx-text-fill: #FFFFFF;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="1056.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/search.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <TableView fx:id="eReservTable" layoutY="191.0" prefHeight="683.0" prefWidth="1119.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="186.0">
+                    <columns>
+                      <TableColumn fx:id="erTReservId" editable="false" prefWidth="87.0" sortable="false" text="Reservation ID" />
+                      <TableColumn fx:id="erTName" editable="false" prefWidth="88.0" sortable="false" text="Name" />
+                        <TableColumn fx:id="erTPhone" editable="false" prefWidth="106.0" sortable="false" text="Phone" />
+                        <TableColumn fx:id="erTNumofPeople" editable="false" prefWidth="77.0" sortable="false" text="No. of People" />
+                        <TableColumn fx:id="erTTableId" editable="false" prefWidth="59.0" sortable="false" text="Table ID" />
+                        <TableColumn fx:id="erTNUmofTable" editable="false" prefWidth="75.0" sortable="false" text="No. of Table" />
+                        <TableColumn fx:id="erTReservTime" editable="false" prefWidth="102.0" sortable="false" text="Reservation Time" />
+                        <TableColumn fx:id="erTReservDate" editable="false" prefWidth="102.0" sortable="false" text="Reservation Date" />
+                        <TableColumn fx:id="erTTime" editable="false" prefWidth="57.0" sortable="false" text="Time" />
+                        <TableColumn fx:id="erTDate" editable="false" prefWidth="72.0" sortable="false" text="Date" />
+                        <TableColumn fx:id="erTTotalPay" editable="false" prefWidth="91.0" sortable="false" text="Total Payment" />
+                        <TableColumn fx:id="erTPaid" editable="false" prefWidth="52.0" sortable="false" text="Paid" />
+                        <TableColumn fx:id="erTDue" editable="false" prefWidth="55.0" sortable="false" text="Due" />
+                        <TableColumn fx:id="erTPayMethod" editable="false" prefWidth="95.0" sortable="false" text="Pay Method" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+            <AnchorPane fx:id="ereservationListAnc" prefHeight="200.0" prefWidth="200.0" stylesheets="@../CSS/Tab.css">
+               <children>
+                  <Pane prefHeight="125.0" prefWidth="1118.0" style="-fx-background-color: #0F084B; -fx-border-style: dash-style;">
+                     <children>
+                        <TextField fx:id="erlSearch" layoutX="786.0" layoutY="45.0" onKeyTyped="#eReservationListSearch" prefHeight="35.0" prefWidth="318.0" style="-fx-background-color: #0F084B; -fx-border-color: #FFFFFF; -fx-border-width: 2; -fx-border-radius: 2em; -fx-text-fill: #FFFFFF;">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="1067.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/search.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <JFXTabPane layoutX="1.0" layoutY="125.0" prefHeight="742.0" prefWidth="1117.0" style="-fx-border-color: #FFFFFF;" stylesheets="@../Css/tab.css">
+                     <tabs>
+                        <Tab text="Reservation Info">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="erlReserveTable" prefHeight="683.0" prefWidth="1117.0" tableMenuButtonVisible="true">
+                                       <columns>
+                                          <TableColumn fx:id="erlR_id" editable="false" prefWidth="105.0" sortable="false" text="Reservation ID" />
+                                          <TableColumn fx:id="erlNumofPeople" editable="false" prefWidth="133.0" sortable="false" text="Number of People" />
+                                          <TableColumn fx:id="erlT_id" editable="false" prefWidth="206.0" sortable="false" text="Table ID" />
+                                          <TableColumn fx:id="erlNumofTable" editable="false" prefWidth="123.0" sortable="false" text="Number of  Table" />
+                                          <TableColumn fx:id="erlReserveTime" editable="false" prefWidth="134.0" sortable="false" text="Reservation Time" />
+                                          <TableColumn fx:id="erlReserveDate" editable="false" prefWidth="151.0" sortable="false" text="Reservation Date" />
+                                          <TableColumn fx:id="erlRtime" editable="false" prefWidth="123.0" sortable="false" text="Time" />
+                                          <TableColumn fx:id="erlRdate" editable="false" prefWidth="140.0" sortable="false" text="Date" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Customer Info">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="erlCustomerTable" prefHeight="681.0" prefWidth="1119.0" tableMenuButtonVisible="true">
+                                       <columns>
+                                          <TableColumn fx:id="erlC_id" editable="false" prefWidth="100.0" sortable="false" text="Customer ID" />
+                                          <TableColumn fx:id="erlC_name" editable="false" prefWidth="169.0" sortable="false" text="Customer Name" />
+                                          <TableColumn fx:id="erlC_phone" editable="false" prefWidth="186.0" sortable="false" text="Phone Number " />
+                                          <TableColumn fx:id="erlC_email" editable="false" prefWidth="277.0" sortable="false" text="Email " />
+                                          <TableColumn fx:id="erlC_address" editable="false" prefWidth="398.0" sortable="false" text="Address" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Payment Info">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="erlPaymentTable" prefHeight="681.0" prefWidth="1117.0" tableMenuButtonVisible="true">
+                                       <columns>
+                                          <TableColumn fx:id="erlPay_id" editable="false" prefWidth="126.0" sortable="false" text="Payment ID" />
+                                          <TableColumn fx:id="erlTotalPrice" editable="false" prefWidth="158.0" sortable="false" text="Total price" />
+                                          <TableColumn fx:id="erlPaymethod" editable="false" prefWidth="199.0" sortable="false" text="Payment Method" />
+                                          <TableColumn fx:id="erlTotalPaid" editable="false" prefWidth="175.0" sortable="false" text="Total Paid" />
+                                          <TableColumn fx:id="erlTotalDue" editable="false" prefWidth="174.0" sortable="false" text="Total Due" />
+                                          <TableColumn fx:id="erlP_time" editable="false" prefWidth="147.0" sortable="false" text="Time" />
+                                          <TableColumn fx:id="erlP_date" editable="false" prefWidth="135.0" sortable="false" text="Date" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+               </children></AnchorPane>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
